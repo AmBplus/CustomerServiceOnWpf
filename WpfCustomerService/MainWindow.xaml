@@ -1,0 +1,37 @@
+﻿<Window x:Class="WpfCustomerService.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfCustomerService"
+        mc:Ignorable="d"
+        Title="CustomerApp" Height="600" Width="1200"
+        Background="AliceBlue">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Margin="2" Background="White" Width="250" HorizontalAlignment="Center" BorderThickness="2" BorderBrush="Gray">
+            <StackPanel>
+                <Button Margin="20,20" Background="#3e454c" Foreground="White" FontSize="22" Name="BtnHome" Height="50">Home</Button>
+                <Button Margin="20,20" Background="#3e454c" Foreground="White" FontSize="22" Name="BtnEmploys" Height="50">Employs</Button>
+                <Button Margin="20,20" Background="#3e454c" Foreground="White" FontSize="22" Name="BtnCustomers" Height="50">Customers</Button>
+                <Button Margin="20,20,20,0" Background="#3e454c" Foreground="White" FontSize="22" Name="BtnProducts" Height="50">Products</Button>
+                <Image Height="236" Width="250" Source="Resources/p2.png"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="1" Margin="2" Name="HomePanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+            <Border.Background>
+                <ImageBrush ImageSource="/Resources/4907157.jpg"/>
+            </Border.Background>
+            <StackPanel HorizontalAlignment="Stretch">
+            <Label FontStyle="Italic" FontSize="40" FontFamily="Times New Roman" Margin="0,50,0,0" HorizontalAlignment="Center" FontWeight="Heavy" >Wellcome To Management Application</Label>
+
+
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
+<!-- oriented -> for order compents , خاصیت اورینتت برای چینش عناصر استفاده میشه-->
