@@ -14,23 +14,31 @@
         </Grid.ColumnDefinitions>
         <Border Margin="2" Background="White" Width="250" HorizontalAlignment="Center" BorderThickness="2" BorderBrush="Gray">
             <StackPanel>
-                <Button Margin="20,20" Background="#3e454c" Foreground="White" FontSize="22" Name="BtnHome" Height="50">Home</Button>
-                <Button Margin="20,20" Background="#3e454c" Foreground="White" FontSize="22" Name="BtnEmploys" Height="50">Employs</Button>
-                <Button Margin="20,20" Background="#3e454c" Foreground="White" FontSize="22" Name="BtnCustomers" Height="50">Customers</Button>
-                <Button Margin="20,20,20,0" Background="#3e454c" Foreground="White" FontSize="22" Name="BtnProducts" Height="50">Products</Button>
+                <Button Click="BtnHome_OnClick" Margin="20,20" Background="#3e454c" Foreground="White" FontSize="22" Name="BtnHome" Height="50">Home</Button>
+                <Button Click="BtnEmploys_OnClick" Margin="20,20" Background="#3e454c" Foreground="White" FontSize="22" Name="BtnEmploys" Height="50">Employs</Button>
+                <Button Click="BtnCustomers_OnClick" Margin="20,20" Background="#3e454c" Foreground="White" FontSize="22" Name="BtnCustomers" Height="50">Customers</Button>
+                <Button Click="BtnProducts_OnClick" Margin="20,20,20,0" Background="#3e454c" Foreground="White" FontSize="22" Name="BtnProducts" Height="50">Products</Button>
                 <Image Height="236" Width="250" Source="Resources/p2.png"/>
             </StackPanel>
         </Border>
-        <Border Grid.Column="1" Margin="2" Name="HomePanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+        <Border Grid.Column="1" Margin="2" Name="BackgroundPanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
             <Border.Background>
                 <ImageBrush ImageSource="/Resources/4907157.jpg"/>
             </Border.Background>
-            <StackPanel HorizontalAlignment="Stretch">
+        </Border>
+       <Border Visibility="Visible" Grid.Column="1" Margin="2" Name="HomePanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+           <StackPanel HorizontalAlignment="Stretch">
             <Label FontStyle="Italic" FontSize="40" FontFamily="Times New Roman" Margin="0,50,0,0" HorizontalAlignment="Center" FontWeight="Heavy" >Wellcome To Management Application</Label>
-
-
-
             </StackPanel>
+        </Border>
+        <Border Visibility="Collapsed" Grid.Column="1" Margin="2" Name="EmploysPanel" HorizontalAlignment="Stretch"  BorderThickness="2" BorderBrush="Gray">
+            <Label FontSize="50" HorizontalAlignment="Center" Margin="0,50,0,0"> We Are in Employs Page</Label>
+        </Border>
+        <Border Visibility="Collapsed" Grid.Column="1" Margin="2" Name="customerPanel" HorizontalAlignment="Stretch"  BorderThickness="2" BorderBrush="Gray">
+            <Label FontSize="50" HorizontalAlignment="Center" Margin="0,50,0,0"> We Are in customer Page</Label>
+        </Border>
+        <Border Visibility="Collapsed" Grid.Column="1" Margin="2" Name="ProductsPanel" HorizontalAlignment="Stretch"  BorderThickness="2" BorderBrush="Gray">
+            <Label FontSize="50" HorizontalAlignment="Center" Margin="0,50,0,0"> We Are in Product Page</Label>
         </Border>
     </Grid>
 </Window>
