@@ -26,19 +26,96 @@
                 <ImageBrush ImageSource="/Resources/4907157.jpg"/>
             </Border.Background>
         </Border>
-       <Border Visibility="Visible" Grid.Column="1" Margin="2" Name="HomePanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
-           <StackPanel HorizontalAlignment="Stretch">
-            <Label FontStyle="Italic" FontSize="40" FontFamily="Times New Roman" Margin="0,50,0,0" HorizontalAlignment="Center" FontWeight="Heavy" >Wellcome To Management Application</Label>
+        <Border Visibility="Collapsed" Grid.Column="1" Margin="2" Name="HomePanel" HorizontalAlignment="Stretch" BorderThickness="2" BorderBrush="Gray">
+            <StackPanel HorizontalAlignment="Stretch">
+                <Label FontStyle="Italic" FontSize="40" FontFamily="Times New Roman" Margin="0,50,0,0" HorizontalAlignment="Center" FontWeight="Heavy" >Wellcome To Management Application</Label>
             </StackPanel>
         </Border>
         <Border Visibility="Collapsed" Grid.Column="1" Margin="2" Name="EmploysPanel" HorizontalAlignment="Stretch"  BorderThickness="2" BorderBrush="Gray">
-            <Label FontSize="50" HorizontalAlignment="Center" Margin="0,50,0,0"> We Are in Employs Page</Label>
+            <StackPanel HorizontalAlignment="Stretch">
+                <DataGrid BorderThickness="2" Margin="5" Name="DataGridEmploy" ColumnWidth="*" CanUserAddRows="False" MinColumnWidth="100" CanUserResizeColumns="True" SelectionChanged="EmployDataGrid_OnSelectionChanged" >
+
+                </DataGrid>
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <WrapPanel Margin="5">
+                        <Label Margin="2" FontSize="32" FontWeight="DemiBold">Datailed Info :</Label>
+                        <Label Margin="2,16,2,2" FontSize="20" Content="---" Name="LblEmploy"></Label>
+                    </WrapPanel>
+                    <DockPanel Grid.Row="1" HorizontalAlignment="Center" Margin="20" >
+                        <Button FontSize="16" FontFamily="Times New Roman" Margin="10" Width="150" Height="50" Background="Azure" Name="BtnAddEmployee" Click="BtnAddEmployee_OnClick">Add Employee</Button>
+                        <Button FontSize="16" FontFamily="Times New Roman" Margin="10" Width="150" Height="50" Background="LightCyan" Name="BtnDeleteEmployee" Click="BtnDeleteEmployee_OnClick">
+                            <Button.BorderBrush>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black"/>
+                                    <GradientStop Color="#FFA2BF19" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Button.BorderBrush> Delete Employee
+                        </Button>
+                        <Button FontSize="16" FontFamily="Times New Roman" Margin="10" Width="150" Height="50" Background="AliceBlue" Name="BtnEditEmployee" Click="BtnEditEmployee_OnClick">Edit Employee</Button>
+                    </DockPanel>
+                </Grid>
+            </StackPanel>
         </Border>
-        <Border Visibility="Collapsed" Grid.Column="1" Margin="2" Name="customerPanel" HorizontalAlignment="Stretch"  BorderThickness="2" BorderBrush="Gray">
-            <Label FontSize="50" HorizontalAlignment="Center" Margin="0,50,0,0"> We Are in customer Page</Label>
+        <Border Visibility="Collapsed" Grid.Column="1" Margin="2" Name="CustomerPanel" HorizontalAlignment="Stretch"  BorderThickness="2" BorderBrush="Gray">
+            <StackPanel HorizontalAlignment="Stretch">
+                <DataGrid BorderThickness="2" Name="DataGridCustomer" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeColumns="True" Margin="5" MinColumnWidth="100" SelectionChanged="DataGridCustomer_OnSelectionChanged">
+                </DataGrid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <WrapPanel Margin="5">
+                        <Label Margin="2" FontSize="32" FontWeight="DemiBold">Detailed Info :</Label>
+                        <Label Margin="2 , 16 , 2 , 2" Content="---" FontSize="18"  Name="LblCustomer"></Label>
+                    </WrapPanel>
+                    <DockPanel Grid.Row="1" Margin="20" HorizontalAlignment="Center" >
+                        <Button FontSize="16" FontFamily="Times New Roman" Margin="10" Width="150" Height="50" Background="LightCyan" Name="BtnEditCustomer" Click="BtnEditCustomer_OnClick">Edit</Button>
+                        <Button FontSize="16" FontFamily="Times New Roman" Margin="10" Width="150" Height="50" Background="Ivory" Name="BtnDeleteCustomer" Click="BtnDeleteCustomer_OnClick">
+                            <Button.BorderBrush>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black"/>
+                                    <GradientStop Color="#FFA2BF19" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Button.BorderBrush> Delete
+                        </Button>
+                        <Button FontSize="16" FontFamily="Times New Roman" Margin="10" Width="150" Height="50" Background="AliceBlue" Name="BtnAddCustomer" Click="BtnAddCustomer_OnClick">Add</Button>
+                    </DockPanel>
+                </Grid>
+            </StackPanel>
+
         </Border>
         <Border Visibility="Collapsed" Grid.Column="1" Margin="2" Name="ProductsPanel" HorizontalAlignment="Stretch"  BorderThickness="2" BorderBrush="Gray">
-            <Label FontSize="50" HorizontalAlignment="Center" Margin="0,50,0,0"> We Are in Product Page</Label>
+          <StackPanel>
+              <DataGrid Name="DataGridProduct" Margin="10" BorderThickness="2" CanUserDeleteRows="False" CanUserResizeColumns="True"
+                        CanUserAddRows="False" MinColumnWidth="100" SelectionChanged="DataGridProduct_OnSelectionChanged"></DataGrid>
+              <Grid>
+                  <Grid.RowDefinitions>
+                      <RowDefinition Height="200"></RowDefinition>
+                      <RowDefinition Height="*"></RowDefinition>
+                  </Grid.RowDefinitions>
+                  <WrapPanel Margin="10">
+                    <Label FontSize="32" FontWeight="Bold"  Content="Detaile : "></Label>
+                    <Label Margin="8" FontSize="18"   Content=" ...  " Name="lblProduct"></Label>
+                  </WrapPanel>
+                  <DockPanel Grid.Row="1" Margin="10"  HorizontalAlignment="Center" >
+                         <Button Margin="10" FontSize="16" Width="150" Height="50" Background="AliceBlue" FontFamily="Times New Roman" Name="BtnEditProduct" Content="Edit"  Click="BtnEditProduct_OnClick"></Button>   
+                         <Button Margin="10" FontSize="16" Width="150" Height="50" Background="LightCyan" FontFamily="Times New Roman"   Name="BtnDeleteProduct" Content="Delete"  Click="BtnDeleteProduct_OnClick">
+                             <Button.BorderBrush>
+                                 <RadialGradientBrush>
+                                     <GradientStop Color="Black"/>
+                                     <GradientStop Color="#FFA2BF19" Offset="1"/>
+                                 </RadialGradientBrush>
+                             </Button.BorderBrush>
+                         </Button>   
+                         <Button Margin="10" FontSize="16" Width="150" Height="50" Background="Ivory"  FontFamily="Times New Roman" Name="BtnAddProduct" Content="Add"  Click="BtnAddProduct_OnClick"></Button>   
+                  </DockPanel>
+              </Grid>
+          </StackPanel>
         </Border>
     </Grid>
 </Window>

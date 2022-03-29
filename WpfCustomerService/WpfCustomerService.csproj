@@ -26,6 +26,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\4907157.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

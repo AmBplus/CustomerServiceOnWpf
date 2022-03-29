@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCustomerService", "WpfCustomerService\WpfCustomerService.csproj", "{4C55E1EF-9A03-4998-9AC8-6AF733A65A8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{2C0B0F65-8D41-408D-92A8-A01F81FDC688}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4C55E1EF-9A03-4998-9AC8-6AF733A65A8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C55E1EF-9A03-4998-9AC8-6AF733A65A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C55E1EF-9A03-4998-9AC8-6AF733A65A8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C0B0F65-8D41-408D-92A8-A01F81FDC688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C0B0F65-8D41-408D-92A8-A01F81FDC688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C0B0F65-8D41-408D-92A8-A01F81FDC688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C0B0F65-8D41-408D-92A8-A01F81FDC688}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
