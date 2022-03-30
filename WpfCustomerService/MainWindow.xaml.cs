@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using DataAccess;
 using DataAccess.Control;
 using DataAccess.Models;
+using WpfCustomerService.Forms;
 
 namespace WpfCustomerService
 {
@@ -14,14 +15,6 @@ namespace WpfCustomerService
     /// </summary>
     public partial class MainWindow : Window
     {
-        // Field
-        private readonly CustomerDataAccess _customerDataAccess = new CustomerDataAccess();
-        private readonly EmploysDataAccess _employsDataAccess = new EmploysDataAccess();
-        private readonly ProductDataAccess _productDataAccess = new ProductDataAccess();
-        private ObservableCollection<Customer> _customerCollection = new ObservableCollection<Customer>();
-        private ObservableCollection<Employs> _employsCollection = new ObservableCollection<Employs>();
-        private ObservableCollection<Product> _productsCollection = new ObservableCollection<Product>();
-
         // ctor
         public MainWindow()
         {
@@ -30,14 +23,34 @@ namespace WpfCustomerService
 #pragma warning disable CS4014
             FillData();
         }
+        // Field
+
+        #region Field
+
+        private readonly CustomerDataAccess _customerDataAccess = new CustomerDataAccess();
+        private readonly EmploysDataAccess _employsDataAccess = new EmploysDataAccess();
+        private readonly ProductDataAccess _productDataAccess = new ProductDataAccess();
+        private ObservableCollection<Customer> _customerCollection = new ObservableCollection<Customer>();
+        private ObservableCollection<Employs> _employsCollection = new ObservableCollection<Employs>();
+        private ObservableCollection<Product> _productsCollection = new ObservableCollection<Product>();
+
+        #endregion
+
         // Property
 
-        public Employs CurenEmploys { get; set; } = new Employs();
-        public Product CurenProduct { get; set; } = new Product();
+        #region Property
 
-        public Customer CurenCustomer { get; set; } = new Customer();
+        private Employs CurenEmploys { get; set; } = new Employs();
+        private Product CurenProduct { get; set; } = new Product();
+
+        private Customer CurenCustomer { get; set; } = new Customer();
+
+        #endregion
 
         // Methods
+
+        #region Aggrigate method _Employ_Product_Customer
+
         private async Task FillData()
         {
             _productsCollection = _productDataAccess.GetProductsCollection();
@@ -73,25 +86,6 @@ namespace WpfCustomerService
                 });
         }
 
-        private async void BtnEmploys_OnClick(object sender, RoutedEventArgs e)
-        {
-            CollapsedPanel("EmploysPanel");
-
-            await FillDataGrid("Employ");
-        }
-
-        private async void BtnCustomers_OnClick(object sender, RoutedEventArgs e)
-        {
-            CollapsedPanel("customerPanel");
-            await FillDataGrid("Customer");
-        }
-
-        private async void BtnProducts_OnClick(object sender, RoutedEventArgs e)
-        {
-            CollapsedPanel("ProductsPanel");
-            await FillDataGrid("Product");
-        }
-
         private void CollapsedPanel(string visible)
         {
             HomePanel.Visibility = Visibility.Collapsed;
@@ -107,52 +101,120 @@ namespace WpfCustomerService
             else if (visible == "ProductsPanel") ProductsPanel.Visibility = Visibility.Visible;
         }
 
+        #endregion
+
+        #region Employs
+
+        private Employs getSelectedDataGirdEmploy()
+        {
+            return DataGridEmploy.SelectedItem as Employs;
+        }
 
         private void EmployDataGrid_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (DataGridEmploy.SelectedIndex >= 0)
             {
-                CurenEmploys = DataGridEmploy.SelectedItem as Employs;
+                CurenEmploys = getSelectedDataGirdEmploy();
                 LblEmploy.Content = CurenEmploys?.GetBasicInfo();
             }
         }
 
+        private async void BtnEmploys_OnClick(object sender, RoutedEventArgs e)
+        {
+            CollapsedPanel("EmploysPanel");
+
+            await FillDataGrid("Employ");
+        }
+
         private void BtnAddEmployee_OnClick(object sender, RoutedEventArgs e)
         {
-            // // throw new NotImplementedException();
+            AddEditDeleteEmploysForm addEmloys = new AddEditDeleteEmploysForm(_employsDataAccess);
+            addEmloys.ShowDialog();
         }
 
         private void BtnEditEmployee_OnClick(object sender, RoutedEventArgs e)
         {
-            // // throw new NotImplementedException();
+            if (DataGridEmploy.SelectedIndex >= 0)
+            {
+                AddEditDeleteEmploysForm editEmploy =
+                    new AddEditDeleteEmploysForm(_employsDataAccess, getSelectedDataGirdEmploy());
+                editEmploy.ShowDialog();
+            }
         }
 
         private void BtnDeleteEmployee_OnClick(object sender, RoutedEventArgs e)
         {
-            // // throw new NotImplementedException();
+            if (DataGridEmploy.SelectedIndex >= 0)
+            {
+                MessageBoxResult messageBoxResult = MessageBox.Show("Are You Sure Delete this Emloy ?", "Warning",
+                    MessageBoxButton.OKCancel,
+                    MessageBoxImage.Warning);
+                if (messageBoxResult == MessageBoxResult.OK)
+                {
+                    Employs employ = DataGridEmploy.SelectedItem as Employs;
+                    if (_employsDataAccess.RemoveEmploy(employ.Id))
+                    {
+                        MessageBox.Show("Employ Deleted", "Information", MessageBoxButton.OK,
+                            MessageBoxImage.Information);
+                        LblEmploy.Content = " --- ";
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region Customer
+
+        private async void BtnCustomers_OnClick(object sender, RoutedEventArgs e)
+        {
+            CollapsedPanel("customerPanel");
+            await FillDataGrid("Customer");
         }
 
         private void BtnEditCustomer_OnClick(object sender, RoutedEventArgs e)
         {
-            // throw new NotImplementedException();
+            if (DataGridCustomer.SelectedIndex >= 0)
+            {
+                Customer customer = DataGridCustomer.SelectedItem as Customer;
+                AddEditDeleteCustomerForm editCustomer = new AddEditDeleteCustomerForm(_customerDataAccess, customer);
+                editCustomer.ShowDialog();
+            }
         }
 
         private void BtnAddCustomer_OnClick(object sender, RoutedEventArgs e)
         {
-            // throw new NotImplementedException();
+            AddEditDeleteCustomerForm addCustomer = new AddEditDeleteCustomerForm(_customerDataAccess);
+            addCustomer.ShowDialog();
         }
 
         private void BtnDeleteCustomer_OnClick(object sender, RoutedEventArgs e)
         {
-            // throw new NotImplementedException();
-        }
-
-        private void DataGridProduct_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (DataGridProduct.SelectedIndex >= 0)
+            if (DataGridCustomer.SelectedIndex >= 0)
             {
-                CurenProduct = DataGridProduct.SelectedItem as Product;
-                lblProduct.Content = CurenProduct?.GetBasicInfo();
+                Customer customer = DataGridCustomer.SelectedItem as Customer;
+                try
+                {
+                    MessageBoxResult msBoxResult = MessageBox.Show("Are You Realy Want Delete Seleted Item ?",
+                        "Warning ", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                    if (msBoxResult == MessageBoxResult.OK)
+                    {
+                        bool flag = _customerDataAccess.Removecustomer(customer.Id);
+                        if (flag)
+                            MessageBox.Show("Successfully Delete Selected Customer ....", "Information",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+                        else
+                            MessageBox.Show("USuccessfully Delete Selected Customer ....", "Error Information",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                    }
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message, "Information", MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                }
             }
         }
 
@@ -165,19 +227,71 @@ namespace WpfCustomerService
             }
         }
 
+        #endregion
+
+        #region Products
+
+        private async void BtnProducts_OnClick(object sender, RoutedEventArgs e)
+        {
+            CollapsedPanel("ProductsPanel");
+            await FillDataGrid("Product");
+        }
+
+        private void DataGridProduct_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DataGridProduct.SelectedIndex >= 0)
+            {
+                CurenProduct = DataGridProduct.SelectedItem as Product;
+                lblProduct.Content = CurenProduct?.GetBasicInfo();
+            }
+        }
+
         private void BtnEditProduct_OnClick(object sender, RoutedEventArgs e)
         {
-            // throw new NotImplementedException();
+            if (DataGridProduct.SelectedIndex >= 0)
+            {
+                Product product = DataGridProduct.SelectedItem as Product;
+                AddEditDeleteProductForm editProduct = new AddEditDeleteProductForm(_productDataAccess, product);
+                editProduct.ShowDialog();
+            }
         }
 
         private void BtnDeleteProduct_OnClick(object sender, RoutedEventArgs e)
         {
-            // throw new NotImplementedException();
+            if (DataGridProduct.SelectedIndex >= 0)
+            {
+                Product product = DataGridProduct.SelectedItem as Product;
+                try
+                {
+                    MessageBoxResult msBoxResult = MessageBox.Show("Are You Realy Want Delete Seleted Item ?",
+                        "Warning ", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+                    if (msBoxResult == MessageBoxResult.OK)
+                    {
+                        bool flag = _productDataAccess.RemoveProduct(product.Id);
+                        if (flag)
+                            MessageBox.Show("Successfully Delete Selected Customer ....", "Information",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Information);
+                        else
+                            MessageBox.Show("USuccessfully Delete Selected Customer ....", "Error Information",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                    }
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message, "Information", MessageBoxButton.OK,
+                        MessageBoxImage.Error);
+                }
+            }
         }
 
         private void BtnAddProduct_OnClick(object sender, RoutedEventArgs e)
         {
-            // throw new NotImplementedException();
+            AddEditDeleteProductForm addEditDeleteProductForm = new AddEditDeleteProductForm(_productDataAccess);
+            addEditDeleteProductForm.ShowDialog();
         }
+
+        #endregion
     }
 }

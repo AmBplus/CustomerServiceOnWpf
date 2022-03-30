@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfCustomerService"
         mc:Ignorable="d"
-        Title="CustomerApp" Height="600" Width="1200"
-        Background="AliceBlue">
+        Title="CustomerApp" Height="600" Width="1000" WindowStartupLocation="CenterScreen" Cursor="Hand" Background="White">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -33,7 +32,7 @@
         </Border>
         <Border Visibility="Collapsed" Grid.Column="1" Margin="2" Name="EmploysPanel" HorizontalAlignment="Stretch"  BorderThickness="2" BorderBrush="Gray">
             <StackPanel HorizontalAlignment="Stretch">
-                <DataGrid BorderThickness="2" Margin="5" Name="DataGridEmploy" ColumnWidth="*" CanUserAddRows="False" MinColumnWidth="100" CanUserResizeColumns="True" SelectionChanged="EmployDataGrid_OnSelectionChanged" >
+                <DataGrid BorderThickness="2" Margin="5" Name="DataGridEmploy" ColumnWidth="*" CanUserAddRows="False" MinColumnWidth="100" CanUserResizeColumns="True" SelectionChanged="EmployDataGrid_OnSelectionChanged" Height="200" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
 
                 </DataGrid>
                 <Grid Margin="5">
@@ -74,7 +73,8 @@
                         <Label Margin="2 , 16 , 2 , 2" Content="---" FontSize="18"  Name="LblCustomer"></Label>
                     </WrapPanel>
                     <DockPanel Grid.Row="1" Margin="20" HorizontalAlignment="Center" >
-                        <Button FontSize="16" FontFamily="Times New Roman" Margin="10" Width="150" Height="50" Background="LightCyan" Name="BtnEditCustomer" Click="BtnEditCustomer_OnClick">Edit</Button>
+                        <Button FontSize="16" FontFamily="Times New Roman" Margin="10" Width="150" Height="50" Background="AliceBlue" Name="BtnAddCustomer" Click="BtnAddCustomer_OnClick">Add</Button>
+                     
                         <Button FontSize="16" FontFamily="Times New Roman" Margin="10" Width="150" Height="50" Background="Ivory" Name="BtnDeleteCustomer" Click="BtnDeleteCustomer_OnClick">
                             <Button.BorderBrush>
                                 <RadialGradientBrush>
@@ -83,39 +83,39 @@
                                 </RadialGradientBrush>
                             </Button.BorderBrush> Delete
                         </Button>
-                        <Button FontSize="16" FontFamily="Times New Roman" Margin="10" Width="150" Height="50" Background="AliceBlue" Name="BtnAddCustomer" Click="BtnAddCustomer_OnClick">Add</Button>
+                        <Button FontSize="16" FontFamily="Times New Roman" Margin="10" Width="150" Height="50" Background="LightCyan" Name="BtnEditCustomer" Click="BtnEditCustomer_OnClick">Edit</Button>
                     </DockPanel>
                 </Grid>
             </StackPanel>
 
         </Border>
         <Border Visibility="Collapsed" Grid.Column="1" Margin="2" Name="ProductsPanel" HorizontalAlignment="Stretch"  BorderThickness="2" BorderBrush="Gray">
-          <StackPanel>
-              <DataGrid Name="DataGridProduct" Margin="10" BorderThickness="2" CanUserDeleteRows="False" CanUserResizeColumns="True"
+            <StackPanel>
+                <DataGrid Name="DataGridProduct" Margin="10" BorderThickness="2" CanUserDeleteRows="False" CanUserResizeColumns="True"
                         CanUserAddRows="False" MinColumnWidth="100" SelectionChanged="DataGridProduct_OnSelectionChanged"></DataGrid>
-              <Grid>
-                  <Grid.RowDefinitions>
-                      <RowDefinition Height="200"></RowDefinition>
-                      <RowDefinition Height="*"></RowDefinition>
-                  </Grid.RowDefinitions>
-                  <WrapPanel Margin="10">
-                    <Label FontSize="32" FontWeight="Bold"  Content="Detaile : "></Label>
-                    <Label Margin="8" FontSize="18"   Content=" ...  " Name="lblProduct"></Label>
-                  </WrapPanel>
-                  <DockPanel Grid.Row="1" Margin="10"  HorizontalAlignment="Center" >
-                         <Button Margin="10" FontSize="16" Width="150" Height="50" Background="AliceBlue" FontFamily="Times New Roman" Name="BtnEditProduct" Content="Edit"  Click="BtnEditProduct_OnClick"></Button>   
-                         <Button Margin="10" FontSize="16" Width="150" Height="50" Background="LightCyan" FontFamily="Times New Roman"   Name="BtnDeleteProduct" Content="Delete"  Click="BtnDeleteProduct_OnClick">
-                             <Button.BorderBrush>
-                                 <RadialGradientBrush>
-                                     <GradientStop Color="Black"/>
-                                     <GradientStop Color="#FFA2BF19" Offset="1"/>
-                                 </RadialGradientBrush>
-                             </Button.BorderBrush>
-                         </Button>   
-                         <Button Margin="10" FontSize="16" Width="150" Height="50" Background="Ivory"  FontFamily="Times New Roman" Name="BtnAddProduct" Content="Add"  Click="BtnAddProduct_OnClick"></Button>   
-                  </DockPanel>
-              </Grid>
-          </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <WrapPanel Margin="10">
+                        <Label FontSize="32" FontWeight="Bold"  Content="Detaile : "></Label>
+                        <Label Margin="8" FontSize="18"   Content=" ...  " Name="lblProduct"></Label>
+                    </WrapPanel>
+                    <DockPanel Grid.Row="1" Margin="10"  HorizontalAlignment="Center" >
+                        <Button Margin="10" FontSize="16" Width="150" Height="50" Background="Ivory"  FontFamily="Times New Roman" Name="BtnAddProduct" Content="Add"  Click="BtnAddProduct_OnClick"></Button>
+                     <Button Margin="10" FontSize="16" Width="150" Height="50" Background="LightCyan" FontFamily="Times New Roman"   Name="BtnDeleteProduct" Content="Delete"  Click="BtnDeleteProduct_OnClick">
+                            <Button.BorderBrush>
+                                <RadialGradientBrush>
+                                    <GradientStop Color="Black"/>
+                                    <GradientStop Color="#FFA2BF19" Offset="1"/>
+                                </RadialGradientBrush>
+                            </Button.BorderBrush>
+                        </Button>
+                        <Button Margin="10" FontSize="16" Width="150" Height="50" Background="AliceBlue" FontFamily="Times New Roman" Name="BtnEditProduct" Content="Edit"  Click="BtnEditProduct_OnClick"></Button>
+                    </DockPanel>
+                </Grid>
+            </StackPanel>
         </Border>
     </Grid>
 </Window>

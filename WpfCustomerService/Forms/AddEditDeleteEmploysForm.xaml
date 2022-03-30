@@ -1,0 +1,47 @@
+﻿<Window x:Class="WpfCustomerService.Forms.AddEditDeleteEmploysForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfCustomerService.Forms"
+        mc:Ignorable="d"
+        Title="AddEditDeleteEmploysForm" FontSize="24" Height="650" Width="760" WindowStartupLocation="CenterScreen" Background="#FFE2FBF3">
+    <Grid>
+        <StackPanel Margin="20">
+            <DockPanel Margin="10" >
+                <Label Margin="10">First Name</Label>
+                <TextBox HorizontalAlignment="Right" Width="500" Name="TxtFirstNameEmploy"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10" >
+                <Label Margin="10">LastName</Label>
+                <TextBox HorizontalAlignment="Right" Width="500" Name="TxtLastNameEmploy"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10" >
+                <Label Margin="10">PhoneNumber</Label>
+                <TextBox HorizontalAlignment="Right" Width="500" Name="TxtPhoneNumberEmploy"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10" >
+                <Label Margin="10">Address</Label>
+                <TextBox HorizontalAlignment="Right" Width="500" Name="TxtAddressEmploy"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10" >
+                <Label Margin="10">Department</Label>
+                <ComboBox HorizontalAlignment="Right" Width="500" Name="ComboBoxEmploy">
+                    <ComboBoxItem>Production</ComboBoxItem>
+                    <ComboBoxItem>Sales</ComboBoxItem>
+                    <ComboBoxItem>Advertisement</ComboBoxItem>
+                    <ComboBoxItem>Management</ComboBoxItem>
+                </ComboBox>
+            </DockPanel>
+            <DockPanel Margin="10" >
+                <Label Margin="10">BaseSalary</Label>
+                <TextBox HorizontalAlignment="Right" Width="500" Name="TxtBaseSalaryEmploy"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="130 10 10 10" HorizontalAlignment="Center" >
+                <Button Margin="10" Height="50" Width="200" Name="BtnCancelEmploy" Background="LightCyan" HorizontalAlignment="Right" Content="Cancel" Click="BtnCancelEmploy_OnClick"></Button>
+                <Button Margin="10" Height="50" Width="200" Name="BtnOkEmploy" Background="LightCyan" HorizontalAlignment="Right" Content="OK" Click="BtnOkEmploy_OnClick"></Button>
+            </DockPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>

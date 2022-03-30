@@ -1,0 +1,36 @@
+﻿<Window x:Class="WpfCustomerService.Forms.AddEditDeleteProductForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfCustomerService.Forms"
+        mc:Ignorable="d"
+        Title="AddEditDeleteProductForm" FontSize="24" Height="480" Width="760">
+    <Grid Margin="0,0,0,-9" Cursor="Hand" Visibility="Visible" Background="#FFDDE7D6">
+        <StackPanel Margin="20">
+            <DockPanel Margin="10" >
+                <Label Margin="10">Book Name</Label>
+                <TextBox HorizontalAlignment="Right" Width="500" Name="TxtFirstNameProduct"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10" >
+                <Label  Margin="10">Remining Book</Label>
+                <TextBox  HorizontalAlignment="Right" Width="500" Name="TxtBookCountInventoryProduct"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10" >
+                <Label Margin="10">Athor</Label>
+                <TextBox HorizontalAlignment="Right" Width="500" Name="TxtAthorProduct"></TextBox>
+            </DockPanel>
+            <DockPanel Margin="10" >
+                <Label Margin="10">Price</Label>
+                <TextBox HorizontalAlignment="Right" Width="500" Name="TxtPriceProduct"></TextBox>
+            </DockPanel>
+           
+    
+            <DockPanel Margin="130 10 10 10" HorizontalAlignment="Center" >
+                <Button Margin="10" Height="50" Width="200" Click="BtnCancelProduct_OnClick" Name="BtnCancelProduct" Background="LightCyan" HorizontalAlignment="Right" Content="Cancel" ></Button>
+                <Button Margin="10" Height="50" Width="200" Click="BtnOkProduct_OnClick" Name="BtnOkProduct" Background="LightCyan" HorizontalAlignment="Right" Content="OK" ></Button>
+            </DockPanel>
+
+        </StackPanel>
+    </Grid>
+</Window>
